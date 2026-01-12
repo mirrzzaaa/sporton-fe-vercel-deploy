@@ -31,8 +31,8 @@ const categoryList = [
 
 
 const CategoriesSection = () => {
-    return <section id="category-section" className="container mx-auto pb-20">
-        <div className="flex justify-between">
+    return <section id="category-section" className="container mx-auto px-20 pb-20">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <h2 className="font-bold text-2xl">
                 Browse By Categories
             </h2>
@@ -41,9 +41,9 @@ const CategoriesSection = () => {
                 <FiArrowRight className="self-center" />
             </Link>
         </div>
-        <div className="grid grid-cols-6 gap-12 mt-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mt-8">
             {categoryList.map((category) => (
-                <div className="rounded-lg bg-gradient-to-r from-[#F1F1F1] to-[#F7f7f7] w-full aspect-square flex flex-col items-center justify-center gap-4"
+                <div className="rounded-xl bg-gradient-to-r from-[#F1F1F1] to-[#F7f7f7] w-full aspect-square flex flex-col items-center justify-center gap-3transition hover:scale-105"
                     key={category.name}>
                     <div className="self-center">
                         <Image
@@ -51,7 +51,7 @@ const CategoriesSection = () => {
                             width={86}
                             height={86}
                             alt={category.name}
-                            className="mb-[10px]"
+                            className="sm:w-[86px] sm:h-[86px]"
                         />
                         <div className="text-primary font-medium text-xl text-center">
                             {category.name}
