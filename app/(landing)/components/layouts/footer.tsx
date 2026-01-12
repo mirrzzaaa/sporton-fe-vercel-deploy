@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className="bg-dark-alternate text-white mt-32">
 
-            <div className="container mx-auto px-4 pt-14 pb-24
+            <div className="container mx-auto px-10 pt-14 pb-24
                 flex flex-col gap-12 md:flex-row md:justify-between">
 
                 <div className="max-w-sm">

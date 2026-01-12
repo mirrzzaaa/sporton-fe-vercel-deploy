@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
     return (
-        <section className="relative container mx-auto px-4 min-h-screen flex items-center overflow-hidden">
+        <section className="relative container mx-auto px-4 min-h-screen flex items-center overflow-hidden pt-10 lg:pt-10 pb-20">
             <div className="relative w-full">
 
                 {/* Basketball decorative (desktop only) dengan menambahkan "hidden lg:block" */}
@@ -25,8 +25,7 @@ const HeroSection = () => {
             font-extrabold italic leading-tight
             bg-gradient-to-b from-black to-[#979797]
             bg-clip-text text-transparent
-            text-4xl sm:text-5xl md:text-6xl lg:text-[95px]
-          ">
+            text-3xl sm:text-5xl md:text-6xl lg:text-[72px] ">
                         WEAR YOUR <br />
                         TOP-QUALITY <br />
                         SPORTSWEAR
@@ -57,13 +56,13 @@ const HeroSection = () => {
 
                 <Image
                     src="/images/img-hero.png"
-                    width={700}
-                    height={950}
+                    width={420}
+                    height={420}
                     alt="image sporton hero"
                     className="
             mt-12 lg:mt-0
             mx-auto lg:mx-0
-            w-[280px] sm:w-[360px] md:w-[420px] lg:w-[700px]
+            w-[280px] sm:w-[360px] md:w-[420px] lg:w-[620px]
             lg:absolute lg:-right-5 lg:top-1/2 lg:-translate-y-1/2"
                 />
             </div>
