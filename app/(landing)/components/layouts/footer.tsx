@@ -30,6 +30,7 @@ const Footer = () => {
                         <Link href="#">About Us</Link>
                     </div>
 
+
                     <div className="flex flex-col gap-6">
                         <Link href="#">Instagram</Link>
                         <Link href="#">Facebook</Link>
@@ -37,6 +38,7 @@ const Footer = () => {
                         <Link href="#">YouTube</Link>
                     </div>
                 </div>
+
             </div>
 
             <div className="border-t border-white/15">

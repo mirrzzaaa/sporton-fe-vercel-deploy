@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/button";
 import { FiPlus } from "react-icons/fi";
+import priceFormater from "@/app/utils/proce-formater";
 
 const productList = [
     {
@@ -52,29 +53,32 @@ const productList = [
         price: 450000,
         imgUrl: "product-8.png",
     },
-]
+];
 
 const ProductSection = () => {
     return (
         <section id="products-section" className="container mx-auto px-20 mt-20">
-
-            <h2 className="font-bold italic text-center mb-10
-        text-2xl sm:text-3xl md:text-4xl">
+            <h2
+                className="font-bold italic text-center mb-10
+        text-2xl sm:text-3xl md:text-4xl"
+            >
                 <span className="text-primary">OUR </span>
                 PRODUCT
             </h2>
 
             {/* GRID */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
-
                 {/*productcard*/}
                 {productList.map((product, index) => (
-                    <Link href="#" key={index}
-                        className="p-1.5 bg-white hover:drop-shadow-xl duration-300 group">
-
-                        <div className="p-2 bg-primary-light rounded-xl aspect-square flex items-center justify-center
-              transition group-hover:scale-105">
-
+                    <Link
+                        href="#"
+                        key={index}
+                        className="p-1.5 bg-white hover:drop-shadow-xl duration-300 group px-3 py-4"
+                    >
+                        <div
+                            className="p-2 bg-primary-light rounded-xl aspect-square flex items-center justify-center
+              transition group-hover:scale-105"
+                        >
                             <Image
                                 src={`/images/products/${product.imgUrl}`}
                                 alt={product.name}
@@ -88,20 +92,14 @@ const ProductSection = () => {
                         </div>
 
                         <h3 className="font-medium text-lg mb-1.5 mt-4">{product.name}</h3>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-8 gap-1 sm:gap-0">
+                        <div className="flex flex-col sm:flex-row sm:justify-between mb-8 gap-1 sm:gap-2">
                             <div className="text-gray-500">{product.categoru}</div>
-                            <div className="font-medium text-primary">
-                                {Intl.NumberFormat("id-ID", {
-                                    style: "currency",
-                                    currency: "IDR",
-                                    maximumSignificantDigits: 3,
-                                }).format(product.price)}
-                            </div>
+                            <div className="font-medium text-primary">{priceFormater(product.price)}</div>
                         </div>
                     </Link>
                 ))}
             </div>
-        </section>
+        </section >
     );
 };
 
