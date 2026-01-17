@@ -16,8 +16,7 @@ const Header = () => {
                 <img
                     src="/images/logo.svg"
                     alt="Sporton Logo"
-                    className="w-[110px] md:w-[127px]"
-                />
+                    className="w-27.5 md:w-31.75" />
 
                 {/* Navigation (Desktop) */}
                 <nav className="hidden md:flex items-center gap-20 font-medium">

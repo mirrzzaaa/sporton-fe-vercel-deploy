@@ -57,7 +57,7 @@ const productList = [
 
 const ProductSection = () => {
     return (
-        <section id="products-section" className="container mx-auto px-20 mt-20">
+        <section id="products-section" className="container mx-auto px-20 mt-20 mb-20">
             <h2
                 className="font-bold italic text-center mb-10
         text-2xl sm:text-3xl md:text-4xl"
@@ -76,8 +76,9 @@ const ProductSection = () => {
                         className="p-1.5 bg-white hover:drop-shadow-xl duration-300 group px-3 py-4"
                     >
                         <div
-                            className="p-2 bg-primary-light rounded-xl aspect-square flex items-center justify-center
-              transition group-hover:scale-105"
+                            className="p-2 bg-primary-light rounded-xl 
+                            aspect-square flex items-center justify-center
+                            transition group-hover:scale-105"
                         >
                             <Image
                                 src={`/images/products/${product.imgUrl}`}

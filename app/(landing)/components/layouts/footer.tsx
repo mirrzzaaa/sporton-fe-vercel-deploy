@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <footer className="bg-dark-alternate text-white mt-32">
+        <footer className="bg-dark-alternate text-white">
 
             <div className="container mx-auto px-10 pt-14 pb-24
                 flex flex-col gap-12 md:flex-row md:justify-between">
@@ -14,7 +14,7 @@ const Footer = () => {
                         alt="Sporton Logo"
                         width={187}
                         height={44}
-                        className="w-[110px] md:w-[127px] mb-8"
+                        className="w-27.5 md:w-31.75 mb-8"
                     />
                     <p className="text-gray-300">
                         Engineered for endurance and designed for speed.
