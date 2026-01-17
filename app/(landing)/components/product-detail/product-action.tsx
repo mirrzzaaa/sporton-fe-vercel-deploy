@@ -3,9 +3,14 @@
 import { FiArrowRight, FiChevronDown, FiChevronUp, FiShoppingBag } from "react-icons/fi"
 import Button from "../ui/button"
 import { useState } from "react";
+import { useRouter } from "next/dist/client/components/navigation";
 
 const ProductAction = () => {
+    const { push } = useRouter();
     const [qty, setQty] = useState(1); //untuk data reaktif, apa yang kita isi sesuai dengan yang ditampilkan pada ui
+
+    const Checkout = () => {
+    }
 
 
     return (
@@ -38,6 +43,7 @@ const ProductAction = () => {
             <Button
                 variant="dark"
                 className="flex w-full items-center justify-center gap-2 lg:w-auto"
+                onClick={() => push("/checkout")}
             >
                 Checkout Now
                 <FiArrowRight />

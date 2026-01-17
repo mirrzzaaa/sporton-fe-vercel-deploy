@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/button";
 import { FiPlus } from "react-icons/fi";
-import priceFormater from "@/app/utils/proce-formater";
+import priceFormater from "@/app/utils/price-formater";
 
 const productList = [
     {
@@ -71,7 +71,7 @@ const ProductSection = () => {
                 {/*productcard*/}
                 {productList.map((product, index) => (
                     <Link
-                        href="#"
+                        href={`/product/${product.name}`}
                         key={index}
                         className="p-1.5 bg-white hover:drop-shadow-xl duration-300 group px-3 py-4"
                     >

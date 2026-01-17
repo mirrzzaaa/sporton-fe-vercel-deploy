@@ -1,7 +1,10 @@
-import priceFormater from "@/app/utils/proce-formater";
+"use client";
+
+import priceFormater from "@/app/utils/price-formater";
 import Image from "next/image";
 import Button from "./button";
 import { FiArrowRight, FiTrash2 } from "react-icons/fi";
+import { useRouter } from "next/dist/client/components/navigation";
 
 export const cartList = [
     {
@@ -36,6 +39,13 @@ export const cartList = [
 
 
 const CartPopup = () => {
+    const { push } = useRouter();
+
+    const handleCheckOut = () => {
+        push("/checkout");
+    }
+
+
     const totalPrice = cartList.reduce((total, item) => total + (item.price * item.qty), 0);
 
 
@@ -72,7 +82,10 @@ const CartPopup = () => {
                     <div className="text-primary text-sm">{priceFormater(totalPrice)}</div>
                 </div>
                 <div className="mt-4">
-                    <Button variant="dark" className="w-full">Checkout Now <FiArrowRight /></Button>
+                    <Button variant="dark" className="w-full"
+                        onClick={(handleCheckOut)}
+                    >
+                        Checkout Now <FiArrowRight /></Button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import style from "styled-jsx/style";
 import ProductAction from "../../components/product-detail/product-action";
 
 const ProductDetail = () => {
