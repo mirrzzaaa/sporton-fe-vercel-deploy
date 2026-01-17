@@ -17,7 +17,7 @@ const CartItem = () => {
 
     return (
         <CardWithHeader title="Cart Items">
-            <div className="overflow-auto max-h-75">
+            <div className="overflow-auto max-h-76">
                 {cartList.map((item, index) => (
                     <div key={index} className="flex gap-3 p-4 border-b border-gray-200">
                         <div className="w-16 aspect-square h-16 bg-primary-light flex justify-center items-center">
