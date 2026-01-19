@@ -1,0 +1,6 @@
+import { Product } from "@/app/types";
+import { fetchAPI } from "../lib/api";
+
+export const getAllProducts = async (): Promise<Product[]> => {
+    return await fetchAPI<Product[]>("/products");
+}

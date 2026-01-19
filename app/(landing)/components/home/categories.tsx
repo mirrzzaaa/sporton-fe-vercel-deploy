@@ -1,3 +1,5 @@
+import { getImageUrl } from "@/app/lib/api";
+import { Category } from "@/app/types";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
@@ -7,29 +9,13 @@ const categoryList = [
         name: "Running",
         imgUrl: "category-running.png",
     },
-    {
-        name: "Tennis",
-        imgUrl: "category-tennis.png",
-    },
-    {
-        name: "Basketball",
-        imgUrl: "category-basketball.png",
-    },
-    {
-        name: "Football",
-        imgUrl: "category-football.png",
-    },
-    {
-        name: "Badminton",
-        imgUrl: "category-badminton.png",
-    },
-    {
-        name: "Swimming",
-        imgUrl: "category-swimming.png",
-    },
 ];
 
-const CategoriesSection = () => {
+type TCategoriesProps = {
+    categories: Category[];
+}
+
+const CategoriesSection = ({ categories }: TCategoriesProps) => {
     return (
         <section id="category-section" className="container mx-auto px-20 pb-20">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -40,14 +26,14 @@ const CategoriesSection = () => {
                 </Link>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mt-8">
-                {categoryList.map((category) => (
+                {categories.map((category) => (
                     <div
-                        className="rounded-xl bg-gradient-to-r from-[#F1F1F1] to-[#F7f7f7] w-full aspect-square flex flex-col items-center justify-center gap-3transition hover:scale-105"
-                        key={category.name}
+                        className="rounded-xl bg-gradient-to-r from-[#F1F1F1] to-[#F7f7f7] w-full aspect-square flex flex-col items-center justify-center gap-3 transition hover:scale-105"
+                        key={category._id}
                     >
                         <div className="self-center">
                             <Image
-                                src={`/images/categories/${category.imgUrl}`}
+                                src={getImageUrl(category.imageUrl)}
                                 width={86}
                                 height={86}
                                 alt={category.name}

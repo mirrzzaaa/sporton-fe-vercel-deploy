@@ -3,6 +3,8 @@ import Link from "next/link";
 import Button from "../ui/button";
 import { FiPlus } from "react-icons/fi";
 import priceFormater from "@/app/utils/price-formater";
+import { Product } from "@/app/types";
+import { getImageUrl } from "@/app/lib/api";
 
 const productList = [
     {
@@ -55,7 +57,11 @@ const productList = [
     },
 ];
 
-const ProductSection = () => {
+type TproductSectionProps = {
+    products: Product[];
+}
+
+const ProductSection = ({ products }: TproductSectionProps) => {
     return (
         <section id="products-section" className="container mx-auto px-20 mt-20 mb-20">
             <h2
@@ -69,10 +75,10 @@ const ProductSection = () => {
             {/* GRID */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
                 {/*productcard*/}
-                {productList.map((product, index) => (
+                {products.map((product) => (
                     <Link
-                        href={`/product/${product.name}`}
-                        key={index}
+                        href={`/product/${product._id}`}
+                        key={product._id}
                         className="p-1.5 bg-white hover:drop-shadow-xl duration-300 group px-3 py-4"
                     >
                         <div
@@ -81,7 +87,7 @@ const ProductSection = () => {
                             transition group-hover:scale-105"
                         >
                             <Image
-                                src={`/images/products/${product.imgUrl}`}
+                                src={getImageUrl(product.imageUrl)}
                                 alt={product.name}
                                 width={300}
                                 height={300}
@@ -92,9 +98,9 @@ const ProductSection = () => {
                             </Button>
                         </div>
 
-                        <h3 className="font-medium text-lg mb-1.5 mt-4">{product.name}</h3>
+                        <h3 className="font-medium text-base mb-1.5 mt-4">{product.name}</h3>
                         <div className="flex flex-col sm:flex-row sm:justify-between mb-8 gap-1 sm:gap-2">
-                            <div className="text-gray-500">{product.categoru}</div>
+                            <div className="text-gray-500">{product.category.name}</div>
                             <div className="font-medium text-primary">{priceFormater(product.price)}</div>
                         </div>
                     </Link>
