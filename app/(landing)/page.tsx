@@ -14,7 +14,7 @@ export default async function Home() {
 
 
   return (
-    <main >
+    <main style={{ paddingTop: "80px" }}>
       <HeroSection />
       <CategoriesSection categories={categories} />
       <ProductSection products={product} />
