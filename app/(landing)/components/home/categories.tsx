@@ -1,3 +1,5 @@
+"use client";
+
 import { getImageUrl } from "@/app/lib/api";
 import { Category } from "@/app/types";
 import Image from "next/image";

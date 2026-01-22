@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/button";
@@ -5,63 +7,22 @@ import { FiPlus } from "react-icons/fi";
 import priceFormater from "@/app/utils/price-formater";
 import { Product } from "@/app/types";
 import { getImageUrl } from "@/app/lib/api";
+import useCartStore from "@/app/hooks/use-cart-store";
 
-const productList = [
-    {
-        name: "SportsOn Hyperfast Shoes",
-        categoru: "Running",
-        price: 450000,
-        imgUrl: "product-3.png",
-    },
-    {
-        name: "SportsOn Rockets Tennis",
-        categoru: "Tennis",
-        price: 450000,
-        imgUrl: "product-2.png",
-    },
-    {
-        name: "SportsOn Slowliving",
-        categoru: "Running",
-        price: 450000,
-        imgUrl: "product-1.png",
-    },
-    {
-        name: "SportsOn HyperSoccer v2",
-        categoru: "Football",
-        price: 450000,
-        imgUrl: "product-4.png",
-    },
-    {
-        name: "SportsOn Slowlivin v2",
-        categoru: "Running",
-        price: 450000,
-        imgUrl: "product-5.png",
-    },
-    {
-        name: "SportsOn Basketball Pro",
-        categoru: "basketball",
-        price: 450000,
-        imgUrl: "product-6.png",
-    },
-    {
-        name: "SportsOn Rockets Tennis v2",
-        categoru: "Tennis",
-        price: 450000,
-        imgUrl: "product-7.png",
-    },
-    {
-        name: "SportsOn HyperSoccer v3",
-        categoru: "Football",
-        price: 450000,
-        imgUrl: "product-8.png",
-    },
-];
 
 type TproductSectionProps = {
     products: Product[];
 }
 
 const ProductSection = ({ products }: TproductSectionProps) => {
+    const { addItem } = useCartStore();
+
+    const handleAddToCart = (e: React.MouseEvent, product: Product) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addItem(product);
+    }
+
     return (
         <section id="products-section" className="container mx-auto px-20 mt-20 mb-20">
             <h2
@@ -84,7 +45,7 @@ const ProductSection = ({ products }: TproductSectionProps) => {
                         <div
                             className="p-2 bg-primary-light rounded-xl 
                             aspect-square flex items-center justify-center
-                            transition group-hover:scale-105"
+                            transition group-hover:scale-105 relative"
                         >
                             <Image
                                 src={getImageUrl(product.imageUrl)}
@@ -93,7 +54,7 @@ const ProductSection = ({ products }: TproductSectionProps) => {
                                 height={300}
                                 className="aspect-square object-contain"
                             />
-                            <Button className="w-10 h-10 p-2! absolute right-3 top-3 ">
+                            <Button className="w-10 h-10 p-2! absolute right-3 top-3" onClick={(e) => handleAddToCart(e, product)}>
                                 <FiPlus size={24} />
                             </Button>
                         </div>

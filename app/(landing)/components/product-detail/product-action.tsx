@@ -4,10 +4,23 @@ import { FiArrowRight, FiChevronDown, FiChevronUp, FiShoppingBag } from "react-i
 import Button from "../ui/button"
 import { useState } from "react";
 import { useRouter } from "next/dist/client/components/navigation";
+import useCartStore from "@/app/hooks/use-cart-store";
+import { Product } from "@/app/types";
 
-const ProductAction = () => {
+type TProductActionProps = {
+    product: Product;
+    stock: number;
+}
+
+const ProductAction = ({ product, stock }: TProductActionProps) => {
+    const { addItem } = useCartStore();
     const { push } = useRouter();
     const [qty, setQty] = useState(1); //untuk data reaktif, apa yang kita isi sesuai dengan yang ditampilkan pada ui
+
+    const handleAddToCart = () => {
+        addItem(
+            product, qty)
+    }
 
     const Checkout = () => {
     }
@@ -23,7 +36,8 @@ const ProductAction = () => {
 
                 <div className="flex flex-col w-12">
                     <button className="flex cursor-pointer aspect-square items-center justify-center border-b border-gray-500 h-1/2"
-                        onClick={() => setQty(qty + 1)}
+                        onClick={() => setQty(
+                            qty < stock ? qty + 1 : qty)}
                     >
                         <FiChevronUp />
                     </button>
@@ -35,7 +49,7 @@ const ProductAction = () => {
                 </div>
             </div>
 
-            <Button className="flex w-full items-center justify-center gap-2 lg:w-auto">
+            <Button className="flex w-full items-center justify-center gap-2 lg:w-auto" onClick={handleAddToCart}>
                 <FiShoppingBag size={20} />
                 Add to Cart
             </Button>
