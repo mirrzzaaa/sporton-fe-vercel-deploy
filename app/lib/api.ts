@@ -1,22 +1,24 @@
 export async function fetchAPI<T>(
     endpoint: string,
-    option?: RequestInit
+    options?: RequestInit
 ): Promise<T> {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`, {
-        ...option,
-        cache: option?.cache || "no-store", //karena ingin mendapatkan data yang lebih real time
+        ...options,
+        cache: options?.cache || "no-store", // kita set no-store karena kita ingin mendapat data lebih real time atau lebih updated
     });
 
     if (!res.ok) {
         let errorMessage = `Failed to fetch data from ${endpoint}`;
         try {
-            const erorData = await res.json();
-            errorMessage = erorData.message || erorData.eror || errorMessage;
+            const errorData = await res.json();
+            errorMessage = errorData.message || errorData.error || errorMessage;
         } catch (e) {
             console.log(e);
         }
+
         throw new Error(errorMessage);
     }
+
     return res.json();
 }
 
