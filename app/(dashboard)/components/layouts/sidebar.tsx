@@ -5,9 +5,13 @@ import Link from "next/link";
 import { FiBox, FiCreditCard, FiLayers, FiLogOut, FiShoppingCart } from "react-icons/fi";
 import React from "react";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { logout } from "@/app/services/auth.service";
+import Button from "@/app/(landing)/components/ui/button";
 
 const Sidebar = () => {
     const pathname = usePathname();
+    const { push } = useRouter();
 
     const menuItems = [
         {
@@ -32,6 +36,11 @@ const Sidebar = () => {
         }
     ];
 
+    const handleLogout = () => {
+        logout();
+        push("/admin/login");
+    }
+
     return (
         <aside className="w-80 bg-white shadow-md border-r border-gray-100 flex flex-col fixed left-0 top-0 bottom-0">
             <div className="py-8 px-14 border-b border-gray-200 ">
@@ -51,11 +60,12 @@ const Sidebar = () => {
                 }
                 )}
             </div>
-            <Link href='#' className={`flex gap-3 items-center py-3 px-4.5 mx-5 rounded-lg font-medium duration-300 
-                        hover:bg-gray-100 mt-auto mb-8`}>
+            <button className="flex gap-3 items-center py-3 px-4.5 mx-5 rounded-lg font-medium duration-300 hover:bg-gray-100 mt-auto mb-8"
+                onClick={handleLogout}
+            >
                 <FiLogOut />
                 Logout
-            </Link>
+            </button>
         </aside>
     );
 };
